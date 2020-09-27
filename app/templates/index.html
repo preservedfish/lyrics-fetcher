@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class = "mr-2">
+        <blockquote class = "blockquote text-right">
+            <p class = "mb-0">Revolutionary. This'll change the world.</p>
+            <footer class = "blockquote-footer">"Anonymous"</footer>
+        </blockquote>
+    </div>
+
+    <div class = "mx-2">
+        <div class = "alert alert-info" role = "alert"> 
+            You'll need a Spotify account for this. <p class = "font-italic">You'll be asked to authorize. Don't worry, this app only accesses your current song.</p>
+        </div>
+    </div>
+    
+    <div class = "ml-2">
+        <a href = {{ url }} class = "btn btn-outline-primary" role = "button">Login to Spotify!</a>
+    </div>
+{% endblock %}

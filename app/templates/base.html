@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }} - Lyrics Fetcher </title>
+        <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename = 'css/bootstrap.min.css')  }}">
+    </head>
+    <body>
+        <div class = "m-2">
+            <h1>Fetching the lyrics from your Spotify song, like magic. </h1>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,14 @@
+# Bytecode
+__pycache__/
+
+# API Keys
+secret.py
+
+# Environments
+venv/
+
+# Unused file
+song.html
+
+# Requirements, will update later
+requirements.txt

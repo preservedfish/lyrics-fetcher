@@ -1,4 +1,6 @@
 # A program for displaying song lyrics
+![Login](./assets/login_page.PNG?raw=true)
+![Lyrics](./assets/lyrics_page.PNG?raw=true)
 
 Written using Python, deployed using Flask. Utilizes the Spotify API to fetch the song name and the Genius API to fetch the lyrics. Uses [Bootstrap](https://getbootstrap.com/) for the CSS.
 

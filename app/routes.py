@@ -1,7 +1,7 @@
 from flask import render_template
 from app import app
-import songs
-import lyrics
+import app.songs as songs
+import app.lyrics as lyrics
 
 @app.route('/')
 @app.route('/index')

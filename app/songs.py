@@ -4,8 +4,8 @@ from flask import request
 from secret import client_id, client_secret
 
 
-scope = 'user-read-currently-playing'
-redirect_uri = 'http://localhost:5000/callback'
+SCOPE = 'user-read-currently-playing'
+REDIRECT_URI = 'http://localhost:5000/callback'
 
 
 def get_song():
@@ -17,10 +17,10 @@ def get_song():
     token_re = requests.post('https://accounts.spotify.com/api/token', {
         'grant_type': 'authorization_code',
         'code': code,
-        'redirect_uri': redirect_uri,
+        'redirect_uri': REDIRECT_URI,
         'client_id': client_id,
         'client_secret': client_secret,
-        'scope': scope   
+        'scope': SCOPE   
         })
 
     access_token = token_re.json()['access_token']
@@ -51,4 +51,4 @@ def get_song():
         return ('Couldn\'t find your song. Are you listening to one?', 'If you\'re not listening to a song, can there be an artist?')
 
 def get_url():
-    return f'https://accounts.spotify.com/authorize?response_type=code&client_id={client_id}&scope={scope}&redirect_uri={redirect_uri}'
+    return f'https://accounts.spotify.com/authorize?response_type=code&client_id={client_id}&scope={SCOPE}&redirect_uri={REDIRECT_URI}'

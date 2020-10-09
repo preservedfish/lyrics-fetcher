@@ -2,15 +2,24 @@
 ![Login](./assets/login_page.PNG?raw=true)
 ![Lyrics](./assets/lyrics_page.PNG?raw=true)
 
-Written using Python, deployed using Flask. Utilizes the Spotify API to fetch the song name and the Genius API to fetch the lyrics. Uses [Bootstrap](https://getbootstrap.com/) for the CSS.
+Written in Python, deployed using Flask. Utilizes the Spotify API to fetch the song name and the Genius API to fetch the lyrics. Uses [Bootstrap](https://getbootstrap.com/) for the CSS.
+
+Tested on Windows 10 and Python 3.7.
 
 ## Getting started
-1. The `requirements.txt` file should contain the names of the modules needed.
-2. To run this program, you'll need a [Spotify](https://www.spotify.com/) account and a [Genius](https://genius.com/) account. 
-    * You'll need to register this client with each service's API. From there, you'll need to add secrets such as an API key to `secret_example.py`. 
-    * Afterwards, rename `secret_example.py` to `secret.py`.
-    * **This is required if you wish to host the program.** 
-3. For a user, only a Spotify account is needed.  
+### Installing the modules
+    pip install -r requirements.txt
+The `requirements.txt` file contains the names of the modules needed. They can be installed using the above command.
+
+### Running the program
+    set FLASK_APP = lyrics_fetcher.py
+    flask run
+After changing the directory to the program folder, use these two commands to run the program itself. Then open your favorite browser and visit http://localhost:5000.
+
+### Required accounts
+First and foremost, you'll need a [Spotify](https://www.spotify.com/) account. This program will fetch the song you're currently playing in Spotify. I don't provide the credentials needed to access the API (client_id and client_secret), so you'll also need to [register an application](https://developer.spotify.com/dashboard/) with Spotify. This doesn't take long, but one thing you'll have to do is set a redirect URI. Set this to http://localhost:5000/callback.
+
+Spotify will fetch the song name. To get the lyrics, you'll need a [Genius](https://genius.com/) account. Similarly, you'll also need to [register an app](http://genius.com/api-clients) with Genius. This step is simpler though, as unlike Spotify you'll be getting an access token directly from Genius--meaning no client ids, client secrets, or redirect URIs for Genius.
 
 ---
 This was my first big project. First webapp and first time using APIs.

@@ -13,14 +13,14 @@ def get_song():
         # If the access token exists
         if 'access_token' in session:
             access_token = session['access_token']
-            
+
             # ---- GET SONG AND ARTIST NAMES ----
-            headers = {'Content-Type' : 'application/json', 
-                    'Authorization': 'Bearer ' + access_token}
+            headers = {'Content-Type': 'application/json',
+                       'Authorization': 'Bearer ' + access_token}
 
-            re = requests.get('https://api.spotify.com/v1/me/player/currently-playing', headers = headers)
+            re = requests.get('https://api.spotify.com/v1/me/player/currently-playing', headers=headers)
 
-            if re.status_code == 200: # Success
+            if re.status_code == 200:  # Success
                 song_name = re.json()['item']['name']
                 artist_name = re.json()['item']['album']['artists'][0]['name']
                 return (song_name, artist_name)
@@ -37,7 +37,7 @@ def get_song():
                     })
 
                 session['access_token'] = ref_re.json()['access_token']
-            elif re.status_code == 204: # No song playing
+            elif re.status_code == 204:  # No song playing
                 return ('Couldn\'t find your song. Are you listening to one?', 'If you\'re not listening to a song, can there be an artist?')
         # Get an access token
         else:
@@ -51,10 +51,12 @@ def get_song():
                 'redirect_uri': REDIRECT_URI,
                 'client_id': client_id,
                 'client_secret': client_secret,
-                'scope': SCOPE   
+                'scope': SCOPE
                 })
 
             session['access_token'] = token_re.json()['access_token']
             session['refresh_token'] = token_re.json()['refresh_token']
+
+
 def get_url():
     return f'https://accounts.spotify.com/authorize?response_type=code&client_id={client_id}&scope={SCOPE}&redirect_uri={REDIRECT_URI}'

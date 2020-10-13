@@ -1,4 +1,4 @@
-# 1. IMPORTANT: these variables are needed for the program to work
+# =1. IMPORTANT: these variables are needed for the program to work
 # 2. They will require registering an app with Genius and Spotify
 # 3. To use this program, replace the phoney values with the real ones and rename this file to secret.py
 

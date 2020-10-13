@@ -25,7 +25,7 @@ def get_song():
                 artist_name = re.json()['item']['album']['artists'][0]['name']
                 return (song_name, artist_name)
             elif re.status_code == 401:
-                refresh_token = session['request_token']
+                refresh_token = session['refresh_token']
 
                 # ---- USE REFRESH TOKEN ----
                 client_id64 = base64.b64encode(client_id)

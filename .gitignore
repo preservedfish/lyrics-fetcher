@@ -9,3 +9,6 @@ venv/
 
 # Unused file
 song.html
+
+# VSCode
+.vscode/

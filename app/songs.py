@@ -15,8 +15,10 @@ def get_song():
             access_token = session['access_token']
 
             # ---- GET SONG AND ARTIST NAMES ----
-            headers = {'Content-Type': 'application/json',
-                       'Authorization': 'Bearer ' + access_token}
+            headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + access_token
+            }
 
             re = requests.get('https://api.spotify.com/v1/me/player/currently-playing', headers=headers)
 
@@ -24,18 +26,18 @@ def get_song():
                 song_name = re.json()['item']['name']
                 artist_name = re.json()['item']['album']['artists'][0]['name']
                 return (song_name, artist_name)
-            elif re.status_code == 401:
+            elif re.status_code == 401:  # Access token has expired
                 refresh_token = session['refresh_token']
 
                 # ---- USE REFRESH TOKEN ----
-                client_id64 = base64.b64encode(client_id)
-                client_secret64 = base64.b64encode(client_secret)
-                ref_re = requests.post('https://accounts.spotify.com/api/token', {
+                base64_auth = base64.b64encode(f'{client_id}:{client_secret}'.encode('utf-8')).decode()
+                ref_payload = {
                     'grant_type': 'refresh_token',
-                    'refresh_token': refresh_token}, {
-                    'Authorization': 'Basic' + f'{client_id64}:{client_secret64}'
-                    })
+                    'refresh_token': refresh_token,
+                }
+                ref_headers = {'Authorization': 'Basic ' + f'{base64_auth}'}
 
+                ref_re = requests.post('https://accounts.spotify.com/api/token', data=ref_payload, headers=ref_headers)
                 session['access_token'] = ref_re.json()['access_token']
             elif re.status_code == 204:  # No song playing
                 return ('Couldn\'t find your song. Are you listening to one?', 'If you\'re not listening to a song, can there be an artist?')
@@ -45,15 +47,16 @@ def get_song():
             code = request.args.get('code')
 
             # ---- GET TOKENS ----
-            token_re = requests.post('https://accounts.spotify.com/api/token', {
+            token_payload = {
                 'grant_type': 'authorization_code',
                 'code': code,
                 'redirect_uri': REDIRECT_URI,
                 'client_id': client_id,
                 'client_secret': client_secret,
                 'scope': SCOPE
-                })
+            }
 
+            token_re = requests.post('https://accounts.spotify.com/api/token', data=token_payload)
             session['access_token'] = token_re.json()['access_token']
             session['refresh_token'] = token_re.json()['refresh_token']
 

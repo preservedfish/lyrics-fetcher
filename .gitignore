@@ -1,8 +1,8 @@
 # Bytecode
 __pycache__/
 
-# API Keys
-secret.py
+# Env Var
+.env
 
 # Environments
 venv/

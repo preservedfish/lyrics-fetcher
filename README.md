@@ -19,7 +19,9 @@ After changing the directory to the program folder, use these two commands to ru
 ### Required accounts
 First and foremost, you'll need a [Spotify](https://www.spotify.com/) account. This program will fetch the song you're currently playing in Spotify. I don't provide the credentials needed to access the API (client_id and client_secret), so you'll also need to [register an application](https://developer.spotify.com/dashboard/) with Spotify. This doesn't take long, but one thing you'll have to do is set a redirect URI. Set this to http://localhost:5000/callback.
 
-Spotify will fetch the song name. To get the lyrics, you'll need a [Genius](https://genius.com/) account. Similarly, you'll also need to [register an app](http://genius.com/api-clients) with Genius. This step is simpler though, as unlike Spotify you'll be getting an access token directly from Genius--meaning no client ids, client secrets, or redirect URIs for Genius.
+Spotify will fetch the song name. To get the lyrics, you'll need a [Genius](https://genius.com/) account. Similarly, you'll also need to [register an app](http://genius.com/api-clients) with Genius. This step is simpler though, as unlike Spotify you'll be getting a client access token directly from Genius--meaning no client ids, client secrets, or redirect URIs for Genius.
+
+Afterwards, you'll need to store these values (client_id, client_secret, access_token) in `secret.py`. Instructions can be found in there.
 
 ---
 This was my first big project. First webapp and first time using APIs.

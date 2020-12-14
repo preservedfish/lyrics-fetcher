@@ -1,0 +1,14 @@
+# Bytecode
+**/__pycache__
+
+# Env Var
+.env
+
+# Environments
+venv
+
+# Unused file
+**/song.html
+
+# VSCode
+.vscode
